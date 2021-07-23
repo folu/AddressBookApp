@@ -12,6 +12,7 @@ namespace AddressBookApp.Manipulation
         public Person Get(int id);
         IEnumerable<Person> GetAll();
         public Person Edit(Person person);
-        public Boolean Create(Person person);
+        public void Create(Person person);
+        public void Delete(Person person);
     }
 }

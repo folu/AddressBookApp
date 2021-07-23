@@ -42,3 +42,4 @@ C:\Users\KASIMOTO SATOSHI\Downloads\AddressBookApp\AddressBookApp\bin\Debug\netc
 C:\Users\KASIMOTO SATOSHI\Downloads\AddressBookApp\AddressBookApp\obj\Debug\netcoreapp3.1\Razor\Views\AddressBook\Details.cshtml.g.cs
 C:\Users\KASIMOTO SATOSHI\Downloads\AddressBookApp\AddressBookApp\obj\Debug\netcoreapp3.1\Razor\Views\AddressBook\Edit.cshtml.g.cs
 C:\Users\KASIMOTO SATOSHI\Downloads\AddressBookApp\AddressBookApp\obj\Debug\netcoreapp3.1\Razor\Views\AddressBook\Create.cshtml.g.cs
+C:\Users\KASIMOTO SATOSHI\Downloads\AddressBookApp\AddressBookApp\obj\Debug\netcoreapp3.1\Razor\Views\AddressBook\Delete.cshtml.g.cs

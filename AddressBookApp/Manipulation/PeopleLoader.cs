@@ -17,24 +17,9 @@ namespace AddressBookApp.Manipulation
 
         public PeopleLoader()
         {
-            //var webClient = new WebClient();
-            //var json = webClient.DownloadString(@"C:\Users\KASIMOTO SATOSHI\Projects\Todo\AddressBook_webApp\AddressBook_webApp\wwwroot\lib\people.json");
-            //string jsonn = File.ReadAllText("myobjects.json");
-           // Person ObjPeopleList = new IList<Person>;
-            //ObjPeopleList = JsonConvert.DeserializeObject<Person>(json);
-            // Person myDeserializedClass = JsonConvert.DeserializeObject<Person>(json);
-            //this.Collection = myDeserializedClass;
-
-
-            //string filePath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory)) + @"\wwwroot\lib\people.json";
             string _peopleJson = File.ReadAllText(filePath);
             var _people = JsonConvert.DeserializeObject<List<Person>>(_peopleJson);
             this.Collection = _people;
-            //if (json != null)
-            //{
-            //    var people = JsonConvert.DeserializeObject<List<Person>>(json)
-            //    this.Collection = people;
-            //}
 
         }
         public Person Get(int id)
@@ -51,18 +36,40 @@ namespace AddressBookApp.Manipulation
 
         public Person Edit(Person person)
         {
-            //code to edit here
-            return null;
+            if (person == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            var existing = this.Collection.SingleOrDefault(p => p.Id == person.Id);
+
+            if (existing != null)
+            {
+                this.Collection = this.Collection.Except(new List<Person> { existing }).ToList();
+                this.Collection.Add(person);
+                File.WriteAllText(filePath, JsonConvert.SerializeObject(this.Collection));
+
+                existing = person;
+            }
+
+            return existing;
         }
 
 
-        public Boolean Create(Person person)
+        public void Create(Person person)
         {
             //add new person to the list
             this.Collection.Add(person);
             //save back to file so it's all updated on the json as well
             File.WriteAllText(filePath, JsonConvert.SerializeObject(this.Collection));
-            return true;
+        }
+        public void Delete(Person person)
+        {
+            //add new person to the list
+            this.Collection.Remove(person);
+            //save back to file so it's all updated on the json as well
+            File.WriteAllText(filePath, JsonConvert.SerializeObject(this.Collection));
+
         }
     }
 }
