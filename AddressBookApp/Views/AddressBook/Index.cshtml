@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AddressBookApp.Models.Person>
+
+
+@{
+    ViewData["Title"] = "PACE IT EXCERCISE";
+    string[] columnHeaders = new string[] {"First Name",
+                                            "Last Name",
+                                            "Phone",
+                                            "Email",
+                                            "Action"};
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div class=" table">
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                @{
+                    foreach (var head in columnHeaders)
+                    {
+                        <th>
+                            @head
+                        </th>
+                    }
+                }
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.first_name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.last_name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.phone)
+
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
